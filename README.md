@@ -4,6 +4,8 @@
   <p><strong>A lightning-fast, privacy-first, 100% frontend AI background removal tool.</strong></p>
 </div>
 
+<img width="1728" height="993" alt="Screenshot 2026-03-02 at 2 31 41 PM" src="https://github.com/user-attachments/assets/8c070b15-6351-4794-8537-ab45c3b720fa" />
+
 <br />
 
 Betacut AI is a web-based utility that removes image backgrounds locally within your browser using state-of-the-art Machine Learning models. Powered by `Transformers.js` and the `MODNet` Image Matting pipeline, no images are ever sent to a server.
