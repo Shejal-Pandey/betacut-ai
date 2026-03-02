@@ -1,10 +1,11 @@
 <div align="center">
   <img src="public/logo.png" alt="Betacut AI Logo" width="128" />
   <h1>Betacut AI</h1>
+
+  <img width="1728" height="993" alt="Screenshot 2026-03-02 at 2 31 41 PM" src="https://github.com/user-attachments/assets/8c070b15-6351-4794-8537-ab45c3b720fa" />
+
   <p><strong>A lightning-fast, privacy-first, 100% frontend AI background removal tool.</strong></p>
 </div>
-
-<img width="1728" height="993" alt="Screenshot 2026-03-02 at 2 31 41 PM" src="https://github.com/user-attachments/assets/8c070b15-6351-4794-8537-ab45c3b720fa" />
 
 <br />
 
