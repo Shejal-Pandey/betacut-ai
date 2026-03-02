@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Betacut AI — Free AI-powered background removal. Remove backgrounds instantly in your browser. No uploads, no sign-up, 100% private." />
+  <title>Betacut AI — AI Background Remover</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="/logo.png" />
+
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- ── NAVBAR ─────────────────────────────── -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <img src="/logo.png" width="32" height="32" style="border-radius: 8px;" alt="Betacut AI Logo" />
+          </div>
+          <span class="logo-text">Betacut AI</span>
+        </div>
+        <a href="#tool-section" class="nav-btn-primary">Try Free</a>
+      </div>
+    </nav>
+
+    <!-- ── HERO ──────────────────────────────── -->
+    <section class="hero" id="hero-section">
+      <div class="hero-bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>100% Free · Runs in your browser · No limits</span>
+        </div>
+        <h1 class="hero-title">
+          Remove Image<br />
+          <span class="gradient-text">Background Instantly</span>
+        </h1>
+        <p class="hero-subtitle">
+          Powered by on-device AI. Drop your image and watch the background vanish in seconds — no sign-up, no uploads
+          to any server.
+        </p>
+        <div class="hero-cta">
+          <label for="file-hero" class="btn-primary" id="hero-upload-lbl">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+            Upload Image
+          </label>
+          <input type="file" id="file-hero" accept="image/*" hidden />
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span>⚡</span><span>Instant processing</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span>🔒</span><span>100% private</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span>🆓</span><span>Always free</span></div>
+        </div>
+      </div>
+      <div class="hero-preview">
+        <div class="preview-card glass-card">
+          <div class="preview-images">
+            <div class="preview-half">
+              <img src="/demo-before.jpg" alt="Before" />
+              <span class="preview-label">Before</span>
+            </div>
+            <div class="preview-half">
+              <div class="checker-bg" style="width:100%;height:100%;">
+                <img src="/demo-after.png" alt="After"
+                  style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+              </div>
+              <span class="preview-label">After</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MAIN TOOL ──────────────────────────── -->
+    <section class="tool-section" id="tool-section">
+      <div class="section-header">
+        <h2>Start Removing Backgrounds</h2>
+        <p>Drop your photo below — AI does the rest</p>
+      </div>
+
+      <!-- Drop Zone -->
+      <div class="drop-zone glass-card" id="drop-zone">
+        <div class="drop-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" stroke="currentColor"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+        </div>
+        <p class="drop-title">Drag &amp; Drop your image here</p>
+        <p class="drop-subtitle">or</p>
+        <label for="file-main" class="btn-secondary">Browse Files</label>
+        <input type="file" id="file-main" accept="image/*" hidden />
+        <p class="drop-hint">Supports JPG, PNG, WEBP · Best with people/portraits</p>
+      </div>
+
+      <!-- Workspace -->
+      <div class="workspace" id="workspace" style="display:none;">
+
+        <!-- Progress -->
+        <div class="progress-container glass-card" id="progress-container" style="display:none;">
+          <div class="progress-info">
+            <span class="progress-label" id="progress-label">Loading AI model…</span>
+            <span class="progress-pct" id="progress-pct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+          </div>
+          <p class="progress-hint-text" id="progress-hint-text">Downloading AI model — first run only, cached
+            afterwards.</p>
+        </div>
+
+        <!-- Panels -->
+        <div class="panels" id="panels">
+
+          <!-- Original -->
+          <div class="panel glass-card">
+            <div class="panel-header">
+              <h3>Original</h3>
+            </div>
+            <div class="panel-body">
+              <img id="original-img" alt="Original image" />
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="panel glass-card">
+            <div class="panel-header">
+              <h3>Result</h3>
+              <div class="panel-actions" id="panel-actions" style="display:none;">
+                <button class="icon-btn active" id="btn-transparent" title="Transparent">
+                  <span class="swatch checker-mini"></span>
+                </button>
+                <button class="icon-btn" id="btn-white" title="White BG">
+                  <span class="swatch" style="background:#fff;border:1.5px solid #ccc;"></span>
+                </button>
+                <button class="icon-btn" id="btn-black" title="Black BG">
+                  <span class="swatch" style="background:#111;"></span>
+                </button>
+                <div class="icon-btn color-wrap" title="Custom color">
+                  <input type="color" id="color-picker" value="#ea580c" />
+                  <span class="swatch" id="color-swatch" style="background:#ea580c;"></span>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body result-body checker-result" id="result-body">
+              <!-- Idle / Spinner -->
+              <div id="result-placeholder" class="result-placeholder">
+                <div id="spinner-wrap" style="display:none;" class="spinner-wrap">
+                  <div class="spinner"></div>
+                  <span id="spin-label">Processing…</span>
+                </div>
+                <div id="result-idle" class="result-idle">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="currentColor"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" opacity=".4">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                  <p>Result will appear here</p>
+                </div>
+              </div>
+              <!-- Canvas output -->
+              <div id="canvas-wrap" style="display:none;" class="canvas-wrap">
+                <canvas id="result-canvas"></canvas>
+              </div>
+            </div>
+            <div class="panel-footer" id="panel-footer" style="display:none;">
+              <button class="btn-download" id="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download PNG
+              </button>
+              <button class="btn-ghost" id="new-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <polyline points="1 4 1 10 7 10" />
+                  <path d="M3.51 15a9 9 0 1 0 .49-3.36" />
+                </svg>
+                New Image
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /panels -->
+
+        <!-- Remove BG Button -->
+        <div class="remove-btn-wrap">
+          <button class="btn-primary btn-remove" id="remove-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
+            Remove Background
+          </button>
+        </div>
+
+      </div><!-- /workspace -->
+    </section>
+
+    <!-- ── WHY / FEATURES ─────────────────────── -->
+    <section class="features-section">
+      <div class="section-header">
+        <h2>Why Betacut AI?</h2>
+        <p>Built for speed, privacy, and quality</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card glass-card">
+          <div class="feature-icon orange">🤖</div>
+          <h3>On-Device AI</h3>
+          <p>TensorFlow.js runs the AI model right in your browser. Your images never leave your device.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon pink">⚡</div>
+          <h3>Lightning Fast</h3>
+          <p>Once the model loads, processing is near-instant with no server round-trips.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon blue">🎨</div>
+          <h3>Custom Backgrounds</h3>
+          <p>Keep transparent, apply white, black, or any custom color background with one click.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon green">🔒</div>
+          <h3>100% Private</h3>
+          <p>No sign-up, no data collection. Everything stays in your browser.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ─────────────────────────────── -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <img src="/logo.png" width="32" height="32" style="border-radius: 8px;" alt="Betacut AI Logo" />
+          </div>
+          <span class="logo-text">Betacut AI</span>
+        </div>
+        <p class="footer-copy">© 2026 Betacut AI · Powered by TensorFlow.js · 100% Frontend</p>
+      </div>
+    </footer>
+
+  </div><!-- /app -->
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
